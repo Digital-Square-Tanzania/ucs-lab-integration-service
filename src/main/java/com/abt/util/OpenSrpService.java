@@ -159,12 +159,13 @@ public class OpenSrpService {
         String results = "";
         if (labResult.getSampleType().equalsIgnoreCase("HVL")) {
             labResultEvent.setEventType("Lab HVL Results");
-            results = mTblResult.getLIMSCodedValue();
 
-            if (results.toLowerCase().contains("tnd")) {
+            results = mTblResult.getLIMSRptResult();
+
+            if (mTblResult.getLIMSCodedValue().contains("tnd") || results.toLowerCase().contains("detected")) {
                 results = "11";
             } else if (isInteger(results)) {
-                results = mTblResult.getLIMSCodedValue();
+                results = mTblResult.getLIMSRptResult();
             } else {
                 results = extractIntegers(results).toString();
             }
