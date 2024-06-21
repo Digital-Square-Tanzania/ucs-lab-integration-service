@@ -366,6 +366,7 @@ public class OpenSrpService {
             conn.disconnect();
         } catch (Exception e) {
             e.printStackTrace();
+            response = "Internal Error while processing the payload";
 
         }
         return response;

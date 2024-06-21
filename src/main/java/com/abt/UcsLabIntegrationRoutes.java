@@ -33,10 +33,10 @@ public class UcsLabIntegrationRoutes {
     public UcsLabIntegrationRoutes(ActorSystem<?> system, ActorRef<UcsLabIntegrationRegistry.Command> labIntegrationActor) {
         this.labIntegrationActor = labIntegrationActor;
         scheduler = system.scheduler();
-        askTimeout = system.settings().config().getDuration("my-app.routes.ask-timeout");
-        url = system.settings().config().getString("my-app.url");
-        username = system.settings().config().getString("my-app.username");
-        password = system.settings().config().getString("my-app.password");
+        askTimeout = system.settings().config().getDuration("integration-service.routes.ask-timeout");
+        url = system.settings().config().getString("integration-service.destination.url");
+        username = system.settings().config().getString("integration-service.destination.username");
+        password = system.settings().config().getString("integration-service.destination.password");
 
     }
 
