@@ -64,8 +64,8 @@ public class OpenSrpService {
 
         LabResult.TBLResult mTblResult = null;
         for (LabResult.TBLResult tblResult : tblResults) {
-            if (tblResult.getLIMSObservationCode().equalsIgnoreCase("HIVVC") ||
-                    tblResult.getLIMSObservationCode().equalsIgnoreCase("HIVVL") ||
+            if (tblResult.getLIMSObservationCode().equalsIgnoreCase("HIVVQ") ||
+                    tblResult.getLIMSObservationCode().equalsIgnoreCase("HIVVC") ||
                     tblResult.getLIMSObservationCode().equalsIgnoreCase("HIVVM")
             ) {
                 mTblResult = tblResult;
