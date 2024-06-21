@@ -17,7 +17,7 @@ public class UcsLabIntegrationServiceApp {
     // #start-http-server
     static void startHttpServer(Route route, ActorSystem<?> system) {
         CompletionStage<ServerBinding> futureBinding =
-            Http.get(system).newServerAt("localhost", 8080).bind(route);
+            Http.get(system).newServerAt("localhost", 9202).bind(route);
 
         futureBinding.whenComplete((binding, exception) -> {
             if (binding != null) {
