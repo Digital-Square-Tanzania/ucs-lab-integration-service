@@ -178,6 +178,12 @@ public class OpenSrpService {
                 Arrays.asList(new Object[]{results}), null, null,
                 "results"));
 
+
+        labResultEvent.addObs(new Obs("concept", "text",
+                "source", "",
+                Arrays.asList(new Object[]{"DDR"}), null, null,
+                "source"));
+
         setMetaData(labResultEvent, labResult);
         return labResultEvent;
     }
@@ -242,6 +248,11 @@ public class OpenSrpService {
                 "sample_id", "",
                 Arrays.asList(new Object[]{labRejection.getSampleId()}), null, null,
                 "sample_id"));
+
+        labRejectionEvent.addObs(new Obs("concept", "text",
+                "source", "",
+                Arrays.asList(new Object[]{"DDR"}), null, null,
+                "source"));
 
 
         try {
