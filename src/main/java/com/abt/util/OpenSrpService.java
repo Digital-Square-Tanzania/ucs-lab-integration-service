@@ -162,7 +162,7 @@ public class OpenSrpService {
 
             results = mTblResult.getLIMSRptResult();
 
-            if (mTblResult.getLIMSCodedValue().contains("tnd") || results.toLowerCase().contains("detected")) {
+            if (mTblResult.getLIMSCodedValue().toLowerCase().contains("tnd") || results.toLowerCase().contains("detected")) {
                 results = "11";
             } else if (isInteger(results)) {
                 results = mTblResult.getLIMSRptResult();
@@ -171,7 +171,7 @@ public class OpenSrpService {
             }
         } else {
             labResultEvent.setEventType("HEID Test Results");
-            results = mTblResult.getLIMSCodedValue();
+            results = mTblResult.getLIMSRptResult();
         }
 
         labResultEvent.addObs(new Obs("concept", "text",
