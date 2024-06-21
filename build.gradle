@@ -50,4 +50,7 @@ shadowJar {
                 'Main-Class': 'com.abt.UcsLabIntegrationServiceApp' // Specify your main class
         )
     }
+    mergeServiceFiles {
+        include 'reference.conf'
+    }
 }
