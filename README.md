@@ -1,7 +1,7 @@
 # UCS-LAB-MODULE-INTEGRATION-SERVICE
 
 
-A service used to process received lab results and rejections from DDR.
+A service used to process received HIV Viral Load and DBS lab results and rejections from DDR into UCS.
 
 ## 1. Dev Requirements
 
