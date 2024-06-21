@@ -9,6 +9,7 @@ import akka.http.javadsl.model.StatusCodes;
 import akka.http.javadsl.server.Route;
 import com.abt.domain.LabRejection;
 import com.abt.domain.LabResult;
+import com.abt.util.CustomJacksonSupport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -59,7 +60,7 @@ public class UcsLabIntegrationRoutes {
                                 concat(
                                         post(() ->
                                                 entity(
-                                                        Jackson.unmarshaller(LabResult.class),
+                                                        CustomJacksonSupport.customJacksonUnmarshaller(LabResult.class),
                                                         result ->
                                                                 onSuccess(sendResult(result), performed -> {
                                                                     log.info("Sent Results: {}", performed.description());

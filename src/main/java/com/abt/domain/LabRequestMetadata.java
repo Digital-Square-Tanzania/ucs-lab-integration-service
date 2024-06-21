@@ -46,7 +46,7 @@ public class LabRequestMetadata {
     private String admitAttendDateTime;
 
     @JsonProperty("CollectionVolume")
-    private int collectionVolume;
+    private String collectionVolume;
 
     @JsonProperty("ReceivingFacilityCode")
     private String receivingFacilityCode;
@@ -196,11 +196,11 @@ public class LabRequestMetadata {
         this.admitAttendDateTime = admitAttendDateTime;
     }
 
-    public int getCollectionVolume() {
+    public String getCollectionVolume() {
         return collectionVolume;
     }
 
-    public void setCollectionVolume(int collectionVolume) {
+    public void setCollectionVolume(String collectionVolume) {
         this.collectionVolume = collectionVolume;
     }
 

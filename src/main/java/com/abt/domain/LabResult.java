@@ -24,10 +24,10 @@ public class LabResult extends LabRequestMetadata {
         private String SIUnits;
 
         @JsonProperty("SILoRange")
-        private int SILoRange;
+        private String SILoRange;
 
         @JsonProperty("SIHiRange")
-        private int SIHiRange;
+        private String SIHiRange;
 
         @JsonProperty("DateTimeValue")
         private String DateTimeValue;
@@ -36,7 +36,7 @@ public class LabResult extends LabRequestMetadata {
         private String codedValue;
 
         @JsonProperty("ResultSemiquantitive")
-        private int resultSemiquantitive;
+        private String resultSemiquantitive;
 
         @JsonProperty("Note")
         private boolean note;
@@ -63,10 +63,10 @@ public class LabResult extends LabRequestMetadata {
         private String LIMSCodedValue;
 
         @JsonProperty("WorkUnits")
-        private int workUnits;
+        private String workUnits;
 
         @JsonProperty("CostUnits")
-        private int costUnits;
+        private String costUnits;
 
         public int getSIValue() {
             return SIValue;
@@ -84,19 +84,19 @@ public class LabResult extends LabRequestMetadata {
             this.SIUnits = SIUnits;
         }
 
-        public int getSILoRange() {
+        public String getSILoRange() {
             return SILoRange;
         }
 
-        public void setSILoRange(int SILoRange) {
+        public void setSILoRange(String SILoRange) {
             this.SILoRange = SILoRange;
         }
 
-        public int getSIHiRange() {
+        public String getSIHiRange() {
             return SIHiRange;
         }
 
-        public void setSIHiRange(int SIHiRange) {
+        public void setSIHiRange(String SIHiRange) {
             this.SIHiRange = SIHiRange;
         }
 
@@ -116,11 +116,11 @@ public class LabResult extends LabRequestMetadata {
             this.codedValue = codedValue;
         }
 
-        public int getResultSemiquantitive() {
+        public String getResultSemiquantitive() {
             return resultSemiquantitive;
         }
 
-        public void setResultSemiquantitive(int resultSemiquantitive) {
+        public void setResultSemiquantitive(String resultSemiquantitive) {
             this.resultSemiquantitive = resultSemiquantitive;
         }
 
@@ -188,19 +188,19 @@ public class LabResult extends LabRequestMetadata {
             this.LIMSCodedValue = LIMSCodedValue;
         }
 
-        public int getWorkUnits() {
+        public String getWorkUnits() {
             return workUnits;
         }
 
-        public void setWorkUnits(int workUnits) {
+        public void setWorkUnits(String workUnits) {
             this.workUnits = workUnits;
         }
 
-        public int getCostUnits() {
+        public String getCostUnits() {
             return costUnits;
         }
 
-        public void setCostUnits(int costUnits) {
+        public void setCostUnits(String costUnits) {
             this.costUnits = costUnits;
         }
     }
