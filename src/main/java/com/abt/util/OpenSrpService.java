@@ -197,7 +197,7 @@ public class OpenSrpService {
      */
     public static Event getLabRejectionEvent(LabRejection labRejection) {
         Event labRejectionEvent = new Event();
-        labRejectionEvent.setBaseEntityId(labRejectionEvent.getBaseEntityId());
+        labRejectionEvent.setBaseEntityId(labRejection.getBaseEntityId());
 
         List<LabRejection.LIMSRejection> tblRejections = labRejection.getLIMSRejectionArray();
 
