@@ -12,13 +12,17 @@ import static com.abt.util.OpenSrpService.sendDataToDestination;
 
 public class SendResultsProcessor {
     public String sendResults(LabResult labResult, String url, String username, String password) {
-        Event resultEvent = OpenSrpService.getLabResultsEvent(labResult);
+        try {
+            Event resultEvent = OpenSrpService.getLabResultsEvent(labResult);
 
-        List<Event> events = new ArrayList<>();
-        events.add(resultEvent);
+            List<Event> events = new ArrayList<>();
+            events.add(resultEvent);
 
 
-
-        return sendDataToDestination(new EventRequest(events),url,username,password);
+            return sendDataToDestination(new EventRequest(events), url, username, password);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Internal Error while processing the payload";
+        }
     }
 }

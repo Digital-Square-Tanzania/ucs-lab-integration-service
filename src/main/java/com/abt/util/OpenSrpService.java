@@ -2,9 +2,11 @@ package com.abt.util;
 
 
 import akka.http.javadsl.model.DateTime;
+import com.abt.UcsLabIntegrationRoutes;
 import com.abt.domain.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.slf4j.LoggerFactory;
 
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -116,7 +118,7 @@ public class OpenSrpService {
                     Arrays.asList(new Object[]{labResult.getAuthorisedDateTime()}), null, null,
                     "authorized_date_time"));
         } catch (Exception e) {
-            e.printStackTrace();
+            LoggerFactory.getLogger(UcsLabIntegrationRoutes.class).error(e.getMessage(), e);
         }
 
 
@@ -142,7 +144,7 @@ public class OpenSrpService {
                     Arrays.asList(new Object[]{labResult.getAnalysisDateTime()}), null, null,
                     "tested_date_time"));
         } catch (Exception e) {
-            e.printStackTrace();
+            LoggerFactory.getLogger(UcsLabIntegrationRoutes.class).error(e.getMessage(), e);
         }
 
         labResultEvent.addObs(new Obs("concept", "text",
@@ -275,7 +277,7 @@ public class OpenSrpService {
                     Arrays.asList(new Object[]{rejectionTime}), null, null,
                     "rejection_time"));
         } catch (Exception e) {
-            e.printStackTrace();
+            LoggerFactory.getLogger(UcsLabIntegrationRoutes.class).error(e.getMessage(), e);
         }
 
         labRejectionEvent.addObs(new Obs("concept", "text",
@@ -372,13 +374,13 @@ public class OpenSrpService {
                 response = "Authentication Error: Incorrect Username or password";
             } else {
                 System.out.println("POST request failed.");
-                response = "sending failed";
+                response = "Error: Sending data to UCS failed";
             }
 
             conn.disconnect();
         } catch (Exception e) {
-            e.printStackTrace();
-            response = "Internal Error while processing the payload";
+            LoggerFactory.getLogger(UcsLabIntegrationRoutes.class).error(e.getMessage(), e);
+            response = "Error: " + e.getMessage();
 
         }
         return response;
