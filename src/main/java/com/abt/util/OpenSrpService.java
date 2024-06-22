@@ -12,6 +12,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -96,11 +97,9 @@ public class OpenSrpService {
                 "authorized_by"));
 
         try {
-            Date authorizedDateObj = inputFormat2.parse(labResult.getAuthorisedDateTime());
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(authorizedDateObj);
-            String authorizedDate = dateFormat.format(calendar.getTime());
-            String authorizedTime = timeFormat.format(calendar.getTime());
+            Date authorizedDateObj = parseDate(labResult.getAuthorisedDateTime());
+            String authorizedDate = dateFormat.format(authorizedDateObj.getTime());
+            String authorizedTime = timeFormat.format(authorizedDateObj.getTime());
 
 
             labResultEvent.addObs(new Obs("concept", "text",
@@ -123,11 +122,9 @@ public class OpenSrpService {
 
 
         try {
-            Date testedDateTimeObj = inputFormat2.parse(labResult.getAnalysisDateTime());
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(testedDateTimeObj);
-            String testedDate = dateFormat.format(calendar.getTime());
-            String testedTime = timeFormat.format(calendar.getTime());
+            Date testedDateTimeObj = parseDate(labResult.getAnalysisDateTime());
+            String testedDate = dateFormat.format(testedDateTimeObj.getTime());
+            String testedTime = timeFormat.format(testedDateTimeObj.getTime());
 
             labResultEvent.addObs(new Obs("concept", "text",
                     "tested_date", "",
@@ -259,12 +256,9 @@ public class OpenSrpService {
 
 
         try {
-            Date rejectionDateTimeObj = inputFormat.parse(labRejection.getReceivedDateTime());
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(rejectionDateTimeObj);
-
-            String rejectionDate = dateFormat.format(calendar.getTime());
-            String rejectionTime = timeFormat.format(calendar.getTime());
+            Date rejectionDateTimeObj = parseDate(labRejection.getReceivedDateTime());
+            String rejectionDate = dateFormat.format(rejectionDateTimeObj);
+            String rejectionTime = timeFormat.format(rejectionDateTimeObj);
 
 
             labRejectionEvent.addObs(new Obs("concept", "text",
@@ -384,6 +378,18 @@ public class OpenSrpService {
 
         }
         return response;
+    }
+
+    private static Date parseDate(String dateString) throws ParseException {
+        Date rejectionDateTimeObj;
+        if (dateString.contains("T")) {
+            rejectionDateTimeObj = inputFormat.parse(dateString);
+        } else {
+            rejectionDateTimeObj = inputFormat2.parse(dateString);
+        }
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(rejectionDateTimeObj);
+        return calendar.getTime();
     }
 
     public static void configureBasicAuthHeader(String username,
