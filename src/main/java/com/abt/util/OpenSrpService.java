@@ -217,19 +217,8 @@ public class OpenSrpService {
         labRejectionEvent.setEntityType("ec_lab_requests");
 
         labRejectionEvent.addObs(new Obs("concept", "text",
-                "tested_by", "", Arrays.asList(new Object[]{
-                labRejection.getTestedBy()}), null, null, "tested_by"));
-
-
-        labRejectionEvent.addObs(new Obs("concept", "text",
-                "authorized_by", "",
-                Arrays.asList(new Object[]{labRejection.getAuthorisedBy()}), null, null,
-                "authorized_by"));
-
-        labRejectionEvent.addObs(new Obs("concept", "text",
-                "authorized_by", "",
-                Arrays.asList(new Object[]{labRejection.getAuthorisedBy()}), null, null,
-                "authorized_by"));
+                "rejected_by", "", Arrays.asList(new Object[]{
+                labRejection.getRegisteredBy()}), null, null, "rejected_by"));
 
 
         labRejectionEvent.addObs(new Obs("concept", "text",
@@ -276,7 +265,7 @@ public class OpenSrpService {
 
         labRejectionEvent.addObs(new Obs("concept", "text",
                 "results", "",
-                Arrays.asList(new Object[]{"rejection"}), null, null,
+                Arrays.asList(new Object[]{"rejected"}), null, null,
                 "results"));
 
         setMetaData(labRejectionEvent, labRejection);
