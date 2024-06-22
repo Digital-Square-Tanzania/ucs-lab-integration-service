@@ -64,7 +64,7 @@ public class UcsLabIntegrationRoutes {
                                                         result ->
                                                                 onSuccess(sendResult(result), performed -> {
                                                                     log.info("Sent Results: {}", performed.description());
-                                                                    if (performed.description().equalsIgnoreCase("Error")) {
+                                                                    if (performed.description().toLowerCase().contains("error")) {
                                                                         return complete(StatusCodes.BAD_REQUEST, performed, Jackson.marshaller());
                                                                     } else {
                                                                         return complete(StatusCodes.OK, performed, Jackson.marshaller());
@@ -83,7 +83,7 @@ public class UcsLabIntegrationRoutes {
                                                         rejection ->
                                                                 onSuccess(sendRejection(rejection), performed -> {
                                                                     log.info("Sent Rejections: {}", performed.description());
-                                                                    if (performed.description().equalsIgnoreCase("Error")) {
+                                                                    if (performed.description().toLowerCase().contains("error")) {
                                                                         return complete(StatusCodes.BAD_REQUEST, performed, Jackson.marshaller());
                                                                     } else {
                                                                         return complete(StatusCodes.OK, performed, Jackson.marshaller());
