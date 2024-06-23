@@ -166,7 +166,7 @@ public class OpenSrpService {
             } else if (isInteger(results)) {
                 results = mTblResult.getLIMSRptResult();
             } else {
-                results = extractIntegers(results).toString();
+                results = extractIntegers(results).get(0).toString();
             }
         } else {
             labResultEvent.setEventType("HEID Test Results");
