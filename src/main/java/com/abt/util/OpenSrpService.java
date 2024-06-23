@@ -229,7 +229,7 @@ public class OpenSrpService {
 
         labRejectionEvent.addObs(new Obs("concept", "text",
                 "reasons_for_rejection", "",
-                Arrays.asList(new Object[]{rejectionReasons.toString()}), null, null,
+                Arrays.asList(new Object[]{rejectionReasons.toString().replaceAll(", $", "")}), null, null,
                 "reasons_for_rejection"));
 
 
